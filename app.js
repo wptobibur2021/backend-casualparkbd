@@ -2,11 +2,11 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-
+const path = require("path");
 // Midileware
 app.use(express.json());
 app.use(cors());
-
+app.use("/assets", express.static(path.join(__dirname, "assets")));
 // https://casualparkbd23.vercel.app/
 app.use(bodyParser.json());
 // Routes
