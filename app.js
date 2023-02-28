@@ -4,6 +4,11 @@ const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
 const path = require("path");
+
+// const corsOptions = {
+//   origin: "https://casualparkbd23.vercel.app/",
+//   optionsSuccessStatus: 200,
+// };
 // Midileware
 app.use(express.json());
 app.use(cors());
