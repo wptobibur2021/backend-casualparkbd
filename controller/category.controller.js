@@ -6,12 +6,12 @@ const {
 // Create a category
 exports.createCategory = async (req, res, next) => {
   try {
-    const imgName = req.file;
-    const catData = {
-      ...req.body,
-      catImg: imgName?.filename,
-    };
-    const result = await createCategoryServices(catData);
+    // const imgName = req.file;
+    // const catData = {
+    //   ...req.body,
+    //   catImg: imgName?.filename,
+    // };
+    const result = await createCategoryServices(req.body);
     await res.status(200).json({
       status: "success",
       data: result,

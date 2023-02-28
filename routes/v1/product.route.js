@@ -8,7 +8,7 @@ const productController = require("../../controller/product.controller");
 router
   .route("/")
   .get(productController.getProduct)
-  .post(upload.array("images"), productController.createProduct);
+  .post(productController.createProduct);
 // Product Patch, get, delete operation route declaration below
 router
   .route("/:id")

@@ -9,7 +9,7 @@ const checkAuth = require("../../middlewares/checkAuth");
 router
   .route("/")
   .get(categoryController.getCategory)
-  .post(upload.single("file"), categoryController.createCategory);
+  .post(categoryController.createCategory);
 // Category delete, update, get by ID
 router.route("/:id").delete(categoryController.deleteCat);
 

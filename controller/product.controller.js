@@ -9,16 +9,17 @@ const {
 // Create a product
 exports.createProduct = async (req, res, next) => {
   try {
-    const { files } = req;
-    const images = [];
-    const proData = {
-      ...req.body,
-      images,
-    };
-    files?.forEach((file) => {
-      images.push(file.filename);
-    });
-    const result = await createProductServices(proData);
+    console.log("Req: ", req.body);
+    // const { files } = req;
+    // const images = [];
+    // const proData = {
+    //   ...req.body,
+    //   images,
+    // };
+    // files?.forEach((file) => {
+    //   images.push(file.filename);
+    // });
+    const result = await createProductServices(req.body);
     await res.status(200).json({
       status: "success",
       data: result,
