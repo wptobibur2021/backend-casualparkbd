@@ -10,6 +10,10 @@ const OrderSchema = new mongoose.Schema(
       type: Number,
       required: [true, "Please provide total amount"],
     },
+    orderId: {
+      type: String,
+      required: [true, "Please provide a orderId"],
+    },
     totalQty: {
       type: Number,
       required: [true, "Please provide quantity"],
