@@ -9,8 +9,8 @@ const checkAuth = require("../../middlewares/checkAuth");
 router
   .route("/")
   .get(categoryController.getCategory)
-  .post(categoryController.createCategory);
+  .post(checkAuth, categoryController.createCategory);
 // Category delete, update, get by ID
-router.route("/:id").delete(categoryController.deleteCat);
+router.route("/:id").delete(checkAuth, categoryController.deleteCat);
 
 module.exports = router;

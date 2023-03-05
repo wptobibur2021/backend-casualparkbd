@@ -2,12 +2,13 @@ const express = require("express");
 
 const router = express.Router();
 const orderController = require("../../controller/order.controller");
+const checkAuth = require("../../middlewares/checkAuth");
 
 router
   .route("/")
-  .get(orderController.getOrder)
-  .post(orderController.createOrder);
+  .get(checkAuth, orderController.getOrder)
+  .post(checkAuth, orderController.createOrder);
 
-router.route("/:id").get(orderController.singleOrder);
+router.route("/:id").get(checkAuth, orderController.singleOrder);
 
 module.exports = router;
