@@ -14,6 +14,10 @@ router
 router
   .route("/:id")
   .get(productController.singleProduct)
+  .patch(checkAuth, productController.updateProduct)
   .delete(checkAuth, productController.deleteProduct);
+router
+  .route("/status/:id")
+  .put(checkAuth, productController.updateProductStatus);
 
 module.exports = router;

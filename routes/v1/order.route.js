@@ -9,6 +9,9 @@ router
   .get(checkAuth, orderController.getOrder)
   .post(checkAuth, orderController.createOrder);
 
-router.route("/:id").get(checkAuth, orderController.singleOrder);
+router
+  .route("/:id")
+  .get(checkAuth, orderController.singleOrder)
+  .delete(checkAuth, orderController.deleteOrderById);
 
 module.exports = router;

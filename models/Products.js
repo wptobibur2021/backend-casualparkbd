@@ -8,6 +8,10 @@ const ProductSchema = new mongoose.Schema(
       trim: true,
       lowercase: true,
     },
+    status: {
+      type: Boolean,
+      default: true,
+    },
     desc: {
       type: String,
       trim: true,

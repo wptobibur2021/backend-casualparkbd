@@ -5,12 +5,12 @@ const app = express();
 const cors = require("cors");
 const path = require("path");
 
-const corsOptions = {
-  origin: "https://www.casualparkbd.com",
-  optionsSuccessStatus: 200,
-};
+// const corsOptions = {
+//   origin: "https://www.casualparkbd.com",
+//   optionsSuccessStatus: 200,
+// };
 // Midileware
-app.use(express.json(corsOptions));
+app.use(express.json());
 app.use(cors());
 app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 // https://casualparkbd23.vercel.app/

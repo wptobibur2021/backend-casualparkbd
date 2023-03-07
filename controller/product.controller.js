@@ -4,21 +4,13 @@ const {
   deleteProductServices,
   singleProductServices,
   updateStockProductServices,
+  updateProductServices,
+  updateProductStatusServices,
 } = require("../services/product.services");
 
 // Create a product
-exports.createProduct = async (req, res, next) => {
+exports.createProduct = async (req, res) => {
   try {
-    console.log("Req: ", req.body);
-    // const { files } = req;
-    // const images = [];
-    // const proData = {
-    //   ...req.body,
-    //   images,
-    // };
-    // files?.forEach((file) => {
-    //   images.push(file.filename);
-    // });
     const result = await createProductServices(req.body);
     await res.status(200).json({
       status: "success",
@@ -32,11 +24,10 @@ exports.createProduct = async (req, res, next) => {
       error: e.message,
     });
   }
-  next();
 };
 
 // Get Product
-exports.getProduct = async (req, res, next) => {
+exports.getProduct = async (req, res) => {
   try {
     const result = await getProductServices();
     await res.status(200).json({
@@ -51,14 +42,12 @@ exports.getProduct = async (req, res, next) => {
       error: e,
     });
   }
-  next();
 };
 
 // Delete product
-exports.deleteProduct = async (req, res, next) => {
+exports.deleteProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("ID: ", id);
     const result = await deleteProductServices(id);
     await res.status(200).json({
       status: "success",
@@ -74,11 +63,28 @@ exports.deleteProduct = async (req, res, next) => {
   }
 };
 
-// Single Product
-exports.singleProduct = async (req, res, next) => {
+exports.updateProduct = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("ID: ", id);
+    const result = await updateProductServices(id, req.body);
+    await res.status(200).json({
+      status: "success",
+      data: result,
+      error: null,
+    });
+  } catch (e) {
+    await res.status(500).json({
+      status: "error",
+      data: null,
+      error: e,
+    });
+  }
+};
+
+// Single Product
+exports.singleProduct = async (req, res) => {
+  try {
+    const { id } = req.params;
     const result = await singleProductServices(id);
     await res.status(200).json({
       status: "success",
@@ -92,15 +98,14 @@ exports.singleProduct = async (req, res, next) => {
       error: e.message,
     });
   }
-  next();
 };
 
-//  Update Stock
-exports.updateStockProduct = async (req, res, next) => {
+//  Product Status Update
+exports.updateProductStatus = async (req, res) => {
   try {
-    const carts = req.body;
-    console.log("Carts: ", carts);
-    const result = await updateStockProductServices(carts);
+    const { id } = req.params;
+    const { status } = req.body;
+    const result = await updateProductStatusServices(id, status);
     await res.status(200).json({
       status: "success",
       data: result,
@@ -113,5 +118,4 @@ exports.updateStockProduct = async (req, res, next) => {
       error: e.message,
     });
   }
-  next();
 };

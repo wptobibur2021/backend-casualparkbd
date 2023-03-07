@@ -16,12 +16,20 @@ exports.deleteProductServices = async (id) => {
   return result;
 };
 
+exports.updateProductServices = async (id, data) => {
+  const result = await Products.findByIdAndUpdate(id, {
+    $set: data,
+  });
+  return result;
+};
 exports.singleProductServices = async (slug) => {
   const result = await Products.findOne({ slug });
   return result;
 };
 
-exports.updateStockProductServices = async () => {
-  const result = await Products.updateMany({});
+exports.updateProductStatusServices = async (id, data) => {
+  console.log("Status: ", data);
+  const findOne = await Products.findOne({ _id: id });
+  const result = await findOne.updateOne({ status: !data });
   return result;
 };
