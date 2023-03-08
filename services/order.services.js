@@ -11,11 +11,16 @@ exports.orderGetServices = async () => {
 };
 
 exports.deleteOrderById = async (id) => {
-  console.log("OrderId:", id);
   const result = await Orders.deleteOne({ _id: id });
   return result;
 };
 
+exports.updateStatusByIdServices = async (id, data) => {
+  console.log("Data: ", data);
+  const order = await Orders.findOne({ _id: id });
+  const result = await order.updateOne({ status: !data });
+  return result;
+};
 exports.singleOrderServices = async (id) => {
   const result = await Orders.findOne({ _id: id });
   return result;

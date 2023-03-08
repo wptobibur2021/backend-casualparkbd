@@ -3,6 +3,7 @@ const {
   orderGetServices,
   singleOrderServices,
   deleteOrderById,
+  updateStatusByIdServices,
 } = require("../services/order.services");
 // Order Create
 exports.createOrder = async (req, res) => {
@@ -63,8 +64,28 @@ exports.singleOrder = async (req, res) => {
 exports.deleteOrderById = async (req, res) => {
   try {
     const { id } = req.params;
-    console.log("ID: ", id);
     const result = await deleteOrderById(id);
+    await res.status(200).json({
+      status: "success",
+      data: result,
+      error: null,
+    });
+  } catch (e) {
+    await res.status(500).json({
+      status: "error",
+      data: null,
+      error: e.message,
+    });
+  }
+};
+
+// Status Update
+exports.statusUpdateById = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const { status } = req.body;
+    console.log("Status: ", status);
+    const result = await updateStatusByIdServices(id, status);
     await res.status(200).json({
       status: "success",
       data: result,

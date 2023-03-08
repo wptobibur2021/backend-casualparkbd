@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const cors = require("cors");
-const path = require("path");
+// const path = require("path");
 
 const corsOptions = {
   origin: "https://www.casualparkbd.com",
@@ -12,8 +12,7 @@ const corsOptions = {
 // Midileware
 app.use(express.json());
 app.use(cors(corsOptions));
-app.use("/assets", express.static(path.join(__dirname, "public/assets")));
-// https://casualparkbd23.vercel.app/
+// app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 app.use(bodyParser.json());
 // Routes
 const productRoute = require("./routes/v1/product.route");

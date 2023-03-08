@@ -7,11 +7,12 @@ const checkAuth = require("../../middlewares/checkAuth");
 router
   .route("/")
   .get(checkAuth, orderController.getOrder)
-  .post(checkAuth, orderController.createOrder);
+  .post(orderController.createOrder);
 
 router
   .route("/:id")
   .get(checkAuth, orderController.singleOrder)
-  .delete(checkAuth, orderController.deleteOrderById);
+  .delete(checkAuth, orderController.deleteOrderById)
+  .put(checkAuth, orderController.statusUpdateById);
 
 module.exports = router;

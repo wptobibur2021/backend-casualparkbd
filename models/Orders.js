@@ -26,6 +26,10 @@ const OrderSchema = new mongoose.Schema(
       minLength: [3, "Name must be at least 6 characters"],
       maxLength: [30, "Name is to long"],
     },
+    status: {
+      typr: Boolean,
+      default: false,
+    },
     mobileNo: {
       type: String,
       required: [true, "Please provide mobile number"],
