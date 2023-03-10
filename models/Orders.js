@@ -27,8 +27,8 @@ const OrderSchema = new mongoose.Schema(
       maxLength: [30, "Name is to long"],
     },
     status: {
-      typr: Boolean,
-      default: false,
+      type: Boolean,
+      required: [true, "Please provide order status"],
     },
     mobileNo: {
       type: String,
@@ -54,10 +54,6 @@ const OrderSchema = new mongoose.Schema(
     deleveryCharge: {
       type: String,
       required: [true, "Please provide delevery charge"],
-    },
-    status: {
-      trype: Number,
-      default: 0,
     },
   },
   { timestamps: true },
