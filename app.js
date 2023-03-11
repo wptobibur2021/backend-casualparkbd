@@ -10,8 +10,8 @@ const corsOptions = {
   optionsSuccessStatus: 200,
 };
 // Midileware
-app.use(express.json());
-app.use(cors(corsOptions));
+app.use(express.json(corsOptions));
+app.use(cors());
 // app.use("/assets", express.static(path.join(__dirname, "public/assets")));
 app.use(bodyParser.json());
 // Routes
