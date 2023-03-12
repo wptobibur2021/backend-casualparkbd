@@ -45,11 +45,6 @@ const ProductSchema = new mongoose.Schema(
       trim: true,
       required: [true, "Please provide slug"],
     },
-    // quantity: {
-    //   type: String,
-    //   trim: true,
-    //   required: [true, "Please provide product quntity"],
-    // },
     productCode: {
       type: String,
       trim: true,
